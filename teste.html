@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário Responsivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .calendario {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .dias-da-semana {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background: #ddd;
+        }
+
+        .dias-da-semana div {
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .dias {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            padding: 10px;
+        }
+
+        .dia {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            transition: background 0.3s;
+        }
+
+        .dia:hover {
+            background: #e0e0e0;
+        }
+
+        .vazio {
+            background: transparent;
+            border: none;
+        }
+
+        @media (max-width: 600px) {
+            .calendario {
+                padding: 10px;
+            }
+
+            .dias-da-semana div, .dia {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calendario">
+        <header>
+            <h1>Calendário</h1>
+            <h2>Outubro 2024</h2>
+        </header>
+        <div class="dias-da-semana">
+            <div>Dom</div>
+            <div>Seg</div>
+            <div>Ter</div>
+            <div>Qua</div>
+            <div>Qui</div>
+            <div>Sex</div>
+            <div>Sab</div>
+        </div>
+        <div class="dias">
+            <div class="dia vazio"></div>
+            <div class="dia">1</div>
+            <div class="dia">2</div>
+            <div class="dia">3</div>
+            <div class="dia">4</div>
+            <div class="dia">5</div>
+            <div class="dia">6</div>
+            <div class="dia">7</div>
+            <div class="dia">8</div>
+            <div class="dia">9</div>
+            <div class="dia">10</div>
+            <div class="dia">11</div>
+            <div class="dia">12</div>
+            <div class="dia">13</div>
+            <div class="dia">14</div>
+            <div class="dia">15</div>
+            <div class="dia">16</div>
+            <div class="dia">17</div>
+            <div class="dia">18</div>
+            <div class="dia">19</div>
+            <div class="dia">20</div>
+            <div class="dia">21</div>
+            <div class="dia">22</div>
+            <div class="dia">23</div>
+            <div class="dia">24</div>
+            <div class="dia">25</div>
+            <div class="dia">26</div>
+            <div class="dia">27</div>
+            <div class="dia">28</div>
+            <div class="dia">29</div>
+            <div class="dia">30</div>
+            <div class="dia">31</div>
+            <div class="dia vazio"></div>
+            <div class="dia vazio"></div>
+        </div>
+    </div>
+</body>
+</html>
