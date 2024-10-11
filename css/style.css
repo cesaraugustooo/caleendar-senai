@@ -14,8 +14,10 @@ body {
     width: 35%;
     margin: auto;
     height: auto;
-    background-color: rgb(163, 163, 160);
+    background-color: #d3e9f5;
     border-radius: 20px;
+    max-width: 500px;
+    min-width: 400px;
     box-shadow: 10px 10px 10px 10px rgb(85, 85, 85);
 }
 
@@ -65,4 +67,85 @@ body {
     background-color: rgb(22, 175, 226);
     transform: scale(1.20);
 }
+@media (max-width:1274px){
+    .tudo {
+        width: 70%;
+    }
+    
+    .dias {
+        grid-template-columns: repeat(7, 1fr); 
+    }
+    
+} 
+@media (max-width:1115px){
+    .tudo {
+        width: 50%;
+    }
+    
+    .dias {
+        grid-template-columns: repeat(7, 1fr); 
+    }
+    
+}
+@media (max-width:874px){
+    .tudo {
+        width: 60%;
+    }
+    
+    .dias {
+        grid-template-columns: repeat(7, 1fr); 
+    }
+    
+} 
+@media (max-width:857px){
+    .tudo {
+        width: 60%;
+    }
+    
+    .dias {
+        grid-template-columns: repeat(7, 1fr); 
+    }
+}   
+@media (max-width: 500px) {
+    .dias-semana {
+        grid-template-columns: repeat(7, 1fr);
+        font-size: 0.8rem; 
+    }
 
+    .dia {
+        font-size: 0.7rem;
+        min-width: 15px; 
+        min-height: 15px;
+    }
+    /* .section{
+        width: 300px;
+    } */
+}
+@media (max-width: 768px) {
+    .tudo {
+        width: 90%;
+    }
+    
+    .dias {
+        grid-template-columns: repeat(7, 1fr); 
+    }
+}
+
+@media (max-width: 480px) {
+    .tudo {
+        width: 100%;
+    }
+    
+    .dias {
+        grid-template-columns: repeat(7, 1fr); 
+    }
+}
+@media (max-width: 417px) {
+    .tudo {
+        width: 50%;
+    }
+    
+    .dias {
+        grid-template-columns: repeat(7, 1fr); 
+    }
+}
