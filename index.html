@@ -3,82 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario</title>
+    <title>Calendário</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="./script.js"></script>
 </head>
 <body>
     <main>
-        <section class="tudo">
+        <section class="tudo" style="margin-top: 50px;">
+            <div class="mes">
+                <button id="voltar" style="position: relative; right: 150px;">&lt;</button>
+                <p class="mess"></p>
+                <button id="passar" style="position: relative; left: 150px;">&gt;</button>
+            </div>
             <section class="section">
                 <div class="dias-semana grid">
+                    <div style="color: brown;">Domingo</div>
                     <div>Segunda</div>
                     <div>Terça</div>
                     <div>Quarta</div>
                     <div>Quinta</div>
-                    <div>Sexta</div>
-                    <div>Sabado</div>
-                    <div  style="color: brown;">Domingo</div>
+                    <div>Festa</div>
+                    <div style="color: brown;">Sábado</div>
                 </div>
-                <div class="dias ">
-                        <div class="dia"></div>
-                        <div class="dia"></div>
-                        <div class="dia">1</div>
-                        <div class="dia">2</div>
-                        <div class="dia">3</div>
-                        <div class="dia">4</div>
-                        <div class="dia" style="color: brown;">5</div>
-                        <div class="dia">6</div>
-                        <div class="dia">7</div>
-                        <div class="dia">8</div>
-                        <div class="dia">9</div>
-                        <div class="dia">10</div>
-                        <div class="dia" style="color: blue;">11</div>
-                        <div class="dia"  style="color: brown;">12</div>
-                        <div class="dia">13</div>
-                        <div class="dia">14</div>
-                        <div class="dia">15</div>
-                        <div class="dia">16</div>
-                        <div class="dia">17</div>
-                        <div class="dia">18</div>
-                        <div class="dia"  style="color: brown;">19</div>
-                        <div class="dia">20</div>
-                        <div class="dia">21</div>
-                        <div class="dia">22</div>
-                        <div class="dia">23</div>
-                        <div class="dia">24</div>
-                        <div class="dia">25</div>
-                        <div class="dia"  style="color: brown;">26</div>
-                        <div class="dia">27</div>
-                        <div class="dia">28</div>
-                        <div class="dia">29</div>
-                        <div class="dia">30</div>
-                        <div class="dia"></div>
-                        <div class="dia"></div>
-                        <div class="dia"></div>
-
+                <div class="dias">
                 </div>
-                </section>
-          </section>
-          
+                <div class="selected-date" id="selected-date"></div>
+            </section>
         </section>
-     
+
     </main>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
