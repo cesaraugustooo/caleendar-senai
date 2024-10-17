@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const renderizarCalendario = () => {
         mesHTML.innerText = `${nomesMeses[mes]} ${ano}`;
-        const ultimo_dia_mes = new Date(ano, mes + 1, 0).getDate();
-        let lista = ``
+        const primeiro_dia = new Date(ano, mes, 1).getDay();
+        const ultimo_dia_mes = new Date(ano, mes + 1, 0).getDate(); 
+        const ultimo_dia_mes_anterior = new Date(ano, mes, 0).getDate(); 
+        let lista=``
 
         for (let i = 1; i <= ultimo_dia_mes; i++) {
             lista += `<div class="dia">${i}</div>`
