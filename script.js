@@ -21,11 +21,17 @@ document.addEventListener('DOMContentLoaded', function () {
         let lista = ``;
 
         for (let i = primeiro_dia; i > 0; i--) {
-            lista += `<div class="dia">${ultimo_dia_mes_anterior - i + 1}</div>`;
+            lista += `<div class="dia anterior">${ultimo_dia_mes_anterior - i + 1}</div>`;
         }
         for (let i = 1; i <= ultimo_dia_mes; i++) {
             let diaAtual = i === dia_atual && mes === new Date().getMonth() && ano === new Date().getFullYear() ? "diaAtual" : "";
             lista += `<div class="dia ${diaAtual}">${i}</div>`;
+        }
+        const dias_restantes = 7 - ((primeiro_dia + ultimo_dia_mes) % 7);
+        if (dias_restantes < 7) {
+            for (let i = 1; i <= dias_restantes; i++) {
+            lista += `<div class="dia proximo">${i}</div>`;
+            }
         }
         
         diasTag.innerHTML = lista;
@@ -34,9 +40,19 @@ document.addEventListener('DOMContentLoaded', function () {
             dia.addEventListener('click', function () {
                 document.querySelectorAll('.dia').forEach(d => d.classList.remove('selected'));
                 this.classList.add('selected'); 
+                
                 const day = this.textContent;
+                let mesSelecionado = mes; 
+        
+                if (this.classList.contains('anterior')) {
+                    mesSelecionado--; 
+     
+                } else if (this.classList.contains('proximo')) {
+                    mesSelecionado++;
+    
+                }
                 const selectedDateDisplay = document.getElementById('selected-date');
-                selectedDateDisplay.textContent = `Você selecionou o dia ${day} do ${mes + 1}`;
+                selectedDateDisplay.textContent = `Você selecionou o dia ${day} de ${nomesMeses[mesSelecionado]}`;
             });
         });
     };
