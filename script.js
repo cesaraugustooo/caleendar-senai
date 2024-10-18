@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.classList.add('selected'); 
                 const day = this.textContent;
                 const selectedDateDisplay = document.getElementById('selected-date');
-                selectedDateDisplay.textContent = `Você selecionou o dia ${day}`;
+                selectedDateDisplay.textContent = `Você selecionou o dia ${day} do ${mes + 1}`;
             });
         });
     };
@@ -44,15 +44,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     icones.forEach(icon => {
         icon.addEventListener("click", () => {
+            const animacao = diasTag;
+            animacao.classList.add("fade-out")
+            setTimeout (()=>{
             mes = icon.id === "voltar" ? mes - 1 : mes + 1;
             if (mes < 0) {
                 mes = 11;
                 ano--;
             } else if (mes > 11) {
-                mes = 0;
-                ano++;
+                 mes = 0;
+                 ano++;
             }
             renderizarCalendario();
+            animacao.classList.remove("fade-out")
+            animacao.classList.add("fade-in")
+            setTimeout (() =>{
+                animacao.classList.remove("fade-in");
+            },500);
+            },500);
         });
+
     });
 });
