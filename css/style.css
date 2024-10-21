@@ -38,7 +38,7 @@ body {
 .tudo {
     position: relative;
     top: 50px;
-    width: 35%;
+    width: auto;
     margin: auto;
     height: auto;
     background-color: #d3e9f5;
@@ -101,7 +101,17 @@ body {
     align-items: center;
     justify-content: center;
 }
-
+.apagar{
+    animation: calendario_animacao 2s;
+}
+@keyframes calendario_animacao{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
 
 
 

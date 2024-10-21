@@ -21,16 +21,16 @@ document.addEventListener('DOMContentLoaded', function () {
         let lista = ``;
 
         for (let i = primeiro_dia; i > 0; i--) {
-            lista += `<div class="dia anterior">${ultimo_dia_mes_anterior - i + 1}</div>`;
+            lista += `<div class="dia anterior apagar">${ultimo_dia_mes_anterior - i + 1}</div>`;
         }
         for (let i = 1; i <= ultimo_dia_mes; i++) {
             let diaAtual = i === dia_atual && mes === new Date().getMonth() && ano === new Date().getFullYear() ? "diaAtual" : "";
-            lista += `<div class="dia ${diaAtual}">${i}</div>`;
+            lista += `<div class="dia apagar ${diaAtual}">${i}</div>`;
         }
         const dias_restantes = 7 - ((primeiro_dia + ultimo_dia_mes) % 7);
         if (dias_restantes < 7) {
             for (let i = 1; i <= dias_restantes; i++) {
-            lista += `<div class="dia proximo">${i}</div>`;
+            lista += `<div class="dia proximo apagar">${i}</div>`;
             }
         }
         
@@ -61,8 +61,6 @@ document.addEventListener('DOMContentLoaded', function () {
     icones.forEach(icon => {
         icon.addEventListener("click", () => {
             const animacao = diasTag;
-            animacao.classList.add("fade-out")
-            setTimeout (()=>{
             mes = icon.id === "voltar" ? mes - 1 : mes + 1;
             if (mes < 0) {
                 mes = 11;
@@ -72,13 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
                  ano++;
             }
             renderizarCalendario();
-            animacao.classList.remove("fade-out")
-            animacao.classList.add("fade-in")
-            setTimeout (() =>{
-                animacao.classList.remove("fade-in");
-            },500);
-            },500);
         });
-
     });
 });
