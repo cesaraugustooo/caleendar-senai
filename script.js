@@ -73,3 +73,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+function menuNav() {
+    console.log('oi')
+    const menu = document.getElementById("menuNav");
+    const sobrepor = document.getElementById("sobreposicao")
+    if (menu.style.display === "none" || menu.style.display === "") {
+        menu.style.display = "flex";  
+        sobrepor.style.display = "flex";  
+    } else {
+        menu.style.display = "none";
+        sobrepor.style.display = "none";  
+    }
+    
+}

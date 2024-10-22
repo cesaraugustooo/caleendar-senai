@@ -5,9 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendário</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="./script.js"></script>
 </head>
 <body>
+    <header>
+        <div class="menu" >
+            <div class="menu-icon" id="menu-icon" onclick="menuNav()">
+                <div class="linha"></div>
+                <div class="linha"></div>
+                <div class="linha"></div>
+            </div>
+        </div>
+        <section id="sobreposicao">
+            <nav id="menuNav">
+                 <div class="linha"  onclick="menuNav()"></div>
+                <ul>
+                    <li>Tema</li>
+                    <li>Exemplo</li>
+                    <li>Exemplo</li>
+                    <li>Exemplo</li>
+                </ul>
+            </nav>
+        </section>
+    </header>
     <main>
         <section class="tudo">
             <div class="mes">
@@ -32,5 +51,6 @@
         </section>
 
     </main>
+    <script src="./script.js"></script>
 </body>
 </html>
