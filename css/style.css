@@ -132,8 +132,15 @@ body {
     border-radius: 20px;
     height: 600px;
     position: absolute;
-    background-color:#D6CBC4;
+    background-color:#8C8189
 
+
+
+}
+#menuNav i{
+    padding: 20px;;
+    color: #ffffff;
+    cursor: pointer;
 }
 nav ul li{
     margin: 10px;
@@ -150,8 +157,44 @@ nav ul li{
     height: 100%;
     display: none;
     background-color: rgba(65, 64, 64, 0.458);
+    animation: aparecer 1s
 }
-
+@keyframes aparecer{
+    0%{
+        opacity: 0;
+    }
+    30%{
+        opacity: 0.2;
+    }
+    30%{
+        opacity: 0.3;
+    }
+    30%{
+        opacity: 0.4;
+    }
+    60%{
+        opacity: 0.5;
+    }
+    70%{
+        opacity: 0.6;
+    }
+    80%{
+        opacity: 0.7;
+    }
+    90%{
+        opacity: 0.8;
+    }
+    950%{
+        opacity: 0.9;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+header{
+    width: 10%;
+    height: auto;
+}
 
 
 
