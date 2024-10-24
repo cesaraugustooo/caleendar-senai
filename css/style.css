@@ -3,6 +3,10 @@
     padding: 0;
     font-family: 'Lato', sans-serif; 
 }
+html, body {
+    height: 100%;
+}
+
 .mes {
     display: flex;
     align-items: center;
@@ -29,12 +33,12 @@
     font-size: 24px; 
     font-weight: bold;
 }
-body {
-    background-image: url('../images/Leonardo_Phoenix_A_serene_landscape_image_soft_and_calming_fea_2.jpg');
+#tema{
+    background-image: url('../images/noite.jpg');
     background-size: cover; 
     background-repeat: no-repeat; 
+    height: 100%;
 }
-
 .tudo {
     position: relative;
     top: 50px;
@@ -129,13 +133,11 @@ body {
     top: 30px;
     display: none;
     width: 300px;
+    flex-direction: column;
     border-radius: 20px;
     height: 600px;
     position: absolute;
     background-color:#8C8189
-
-
-
 }
 #menuNav i{
     padding: 20px;;
@@ -157,7 +159,7 @@ nav ul li{
     height: 100%;
     display: none;
     background-color: rgba(65, 64, 64, 0.458);
-    animation: aparecer 1s
+    animation: aparecer 0.5s
 }
 @keyframes aparecer{
     0%{

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = primeiro_dia; i > 0; i--) {
             lista += `<div class="dia anterior apagar">${ultimo_dia_mes_anterior - i + 1}</div>`;
         }
-        for (let i = 1; i <= ultimo_dia_mes; i++) {
+        for (let i = 1; i <= ultimo_dia_mes ; i++) {
             let diaAtual = i === dia_atual && mes === new Date().getMonth() && ano === new Date().getFullYear() ? "diaAtual" : "";
             lista += `<div class="dia apagar ${diaAtual}">${i}</div>`;
         }
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 function menuNav() {
-    console.log('oi')
+    // console.log('oi')
     const menu = document.getElementById("menuNav");
     const sobrepor = document.getElementById("sobreposicao")
     if (menu.style.display === "none" || menu.style.display === "") {
@@ -84,5 +84,24 @@ function menuNav() {
         menu.style.display = "none";
         sobrepor.style.display = "none";  
     }
-    
 }
+
+let flag = 'noite';
+
+function mudarTema(){
+    const tema = document.getElementById("tema");
+    if(flag === 'noite'){
+        tema.style.backgroundImage = "url(./images/tarde.jpg)"
+        flag = 'tarde';
+    }
+    else{
+        tema.style.backgroundImage = "url(../images/noite.jpg)"
+        flag = 'noite'
+    }
+}
+
+
+// mesHTML.innerText = `${nomesMeses[mes]} ${ano}`;
+// const primeiro_dia = new Date(ano, mes, 1).getDay();
+// const ultimo_dia_semana = new Date(ano, primeiro_dia + 7).getDate(); 
+// const ultimo_dia_mes_anterior = new Date(ano, mes, 0).getDate(); 
