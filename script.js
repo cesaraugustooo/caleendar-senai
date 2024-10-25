@@ -1,12 +1,24 @@
-document.addEventListener('DOMContentLoaded', function () {
     const mesHTML = document.querySelector(".mess");
     const diasTag = document.querySelector(".dias");
-    const icones = document.querySelectorAll(".mes button"); 
+    const icones = document.querySelectorAll(".mes button");
     
     let date = new Date();
     let ano = date.getFullYear();
     let mes = date.getMonth();
     let dia_atual = date.getDate();
+    let modoVisualizacao = 'mensal'; 
+    function view(){
+        if(modoVisualizacao ==="semanal"){
+            modoVisualizacao = 'mensal';
+            renderizarCalendario();
+        }else{
+            modoVisualizacao = 'semanal';
+            renderizarCalendario();
+        
+        }
+    
+    }
+    
 
     const nomesMeses = [
         "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", 
@@ -20,36 +32,62 @@ document.addEventListener('DOMContentLoaded', function () {
         const ultimo_dia_mes_anterior = new Date(ano, mes, 0).getDate(); 
         let lista = ``;
 
-        for (let i = primeiro_dia; i > 0; i--) {
-            lista += `<div class="dia anterior apagar">${ultimo_dia_mes_anterior - i + 1}</div>`;
-        }
-        for (let i = 1; i <= ultimo_dia_mes ; i++) {
-            let diaAtual = i === dia_atual && mes === new Date().getMonth() && ano === new Date().getFullYear() ? "diaAtual" : "";
-            lista += `<div class="dia apagar ${diaAtual}">${i}</div>`;
-        }
-        const dias_restantes = 7 - ((primeiro_dia + ultimo_dia_mes) % 7);
-        if (dias_restantes < 7) {
-            for (let i = 1; i <= dias_restantes; i++) {
-            lista += `<div class="dia proximo apagar">${i}</div>`;
+        if (modoVisualizacao === 'mensal') {
+            // visualização mensal
+            for (let i = primeiro_dia; i > 0; i--) {
+                lista += `<div class="dia anterior apagar">${ultimo_dia_mes_anterior - i + 1}</div>`;
             }
+            for (let i = 1; i <= ultimo_dia_mes; i++) {
+                let diaAtual = i === dia_atual && mes === new Date().getMonth() && ano === new Date().getFullYear() ? "diaAtual" : "";
+                lista += `<div class="dia apagar ${diaAtual}">${i}</div>`;
+            }
+            const dias_restantes = 7 - ((primeiro_dia + ultimo_dia_mes) % 7);
+            if (dias_restantes < 7) {
+                for (let i = 1; i <= dias_restantes; i++) {
+                    lista += `<div class="dia proximo apagar">${i}</div>`;
+                }
+            }
+        } else {
+            //visualização semanal
+            const diaAtual = new Date(ano, mes, dia_atual);
+            const primeiroDiaDaSemana = new Date(diaAtual.setDate(diaAtual.getDate() - diaAtual.getDay()));
+            const ultimoDiaDaSemana = new Date(diaAtual.setDate(primeiroDiaDaSemana.getDate() + 6));
+
+            for (let i = 0; i <= 6; i++) {
+                const dia = new Date(primeiroDiaDaSemana);
+                dia.setDate(dia.getDate() + i);
+                lista += `<div class="dia apagar">${dia.getDate()}</div>`;
+            }
+            icones.forEach(icon => {
+                icon.addEventListener("click", () => {
+                    if (icon.id === "voltar") {
+                        let primeiroDia = primeiro_dia.getDate() - 7;
+                        primeiro_dia.setDate(primeiroDia);
+                    } else {
+                        let primeiroDia = primeiro_dia.getDate() + 7;
+                        primeiro_dia.setDate(primeiroDia);
+                    }
+                    console.log(primeiro_dia);
+                    renderSemana(primeiro_dia);
+                });
+            });
+            console.log(primeiro_dia)
         }
-        
+
         diasTag.innerHTML = lista;
 
         document.querySelectorAll('.dia').forEach(dia => {
             dia.addEventListener('click', function () {
                 document.querySelectorAll('.dia').forEach(d => d.classList.remove('selected'));
-                this.classList.add('selected'); 
+                this.classList.add('selected');
                 
                 const day = this.textContent;
-                let mesSelecionado = mes; 
-        
+                let mesSelecionado = mes;
+
                 if (this.classList.contains('anterior')) {
                     mesSelecionado--; 
-     
                 } else if (this.classList.contains('proximo')) {
                     mesSelecionado++;
-    
                 }
                 const selectedDateDisplay = document.getElementById('selected-date');
                 selectedDateDisplay.textContent = `Você selecionou o dia ${day} de ${nomesMeses[mesSelecionado]}`;
@@ -66,14 +104,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 mes = 11;
                 ano--;
             } else if (mes > 11) {
-                 mes = 0;
-                 ano++;
+                mes = 0;
+                ano++;
             }
             renderizarCalendario();
         });
     });
-});
-function menuNav() {
+
+    
+    function menuNav() {
     // console.log('oi')
     const menu = document.getElementById("menuNav");
     const sobrepor = document.getElementById("sobreposicao")
@@ -90,18 +129,19 @@ let flag = 'noite';
 
 function mudarTema(){
     const tema = document.getElementById("tema");
+
     if(flag === 'noite'){
-        tema.style.backgroundImage = "url(./images/tarde.jpg)"
+        tema.style.backgroundImage = "url(./images/tarde.jpg)";
         flag = 'tarde';
+        console.log(flag);
+
     }
-    else{
-        tema.style.backgroundImage = "url(../images/noite.jpg)"
-        flag = 'noite'
+    else if(flag ==='tarde'){
+        tema.style.backgroundImage = "url('./images/noite.jpg')";
+        flag = 'noite';
+        console.log(flag);
     }
+
 }
 
 
-// mesHTML.innerText = `${nomesMeses[mes]} ${ano}`;
-// const primeiro_dia = new Date(ano, mes, 1).getDay();
-// const ultimo_dia_semana = new Date(ano, primeiro_dia + 7).getDate(); 
-// const ultimo_dia_mes_anterior = new Date(ano, mes, 0).getDate(); 
