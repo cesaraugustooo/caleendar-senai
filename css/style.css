@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Lato', sans-serif; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 html, body {
     height: 100%;
@@ -198,20 +198,86 @@ header{
     height: auto;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+.calendar-container {
+    display: none;
+    width: 45%;
+    margin: auto;
+    text-align: center;
+    background-color: #d3e9f5;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+.week-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+.week-days {
+    display: flex;
+    gap: 10px;
+}
+.day {
+    padding: 10px;
+    background-color: #87CEEB;
+    border-radius: 4px;
+    width: 60px;
+    text-align: center;
+}
+.day.today {
+    background-color: #d1e7dd;
+    font-weight: bold;
+}
+button {
+    background-color:#4682B4;
+    padding: 8px 12px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #33648b;
+}
+.formulario{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 40%;
+    height: 440px;
+    margin: auto;
+}
+.formulario div h1{
+    margin-left: 0px;
+}
+.formulario div form input{
+    margin: 5px;
+    padding: 10px;
+}
+.formulario div form{
+    display: flex;
+    flex-direction: column;
+}
+.formulario div{
+    /* background-color: #577c85; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.formulario div form button{
+    margin-left: 2%;
+    width: 95%;
+}
+#txtevento{
+    margin-top: 40px;
+}
 @media (max-width:1274px){
     .tudo {
         width: 70%;
