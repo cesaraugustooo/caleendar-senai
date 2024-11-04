@@ -29,6 +29,7 @@ if(isset($_POST['txtevento']) && isset($_POST['txtdata'])){
     .formulario {
         display: none; 
     }
+
 </style>
 </head>
 <body id="tema">
@@ -82,7 +83,7 @@ if(isset($_POST['txtevento']) && isset($_POST['txtdata'])){
                 <button style="background-color: green;" onclick="changeWeek(1)">></button>
             </div>
             <div class="week-days" id="weekDays"></div>
-            <div class="selected-date" id="selected-date"></div>
+            <div class="selected-date" id="selected-date2"></div>
         </div>
         <section class="formulario">
             <div id="Modal">

@@ -8,35 +8,55 @@ let mes = date.getMonth();
 let dia_atual = date.getDate();
 let modoVisualizacao = 'mensal';
 let flag = 'noite';
-
 const nomesMeses = [
     "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
     "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
 ];
 var ModalSituation = 'fechado';
-function OpenFormulario(){
-    let modal = document.getElementsByClassName("formulario")[0];
-    let ModalColor = document.getElementById('Modal')
-    let tudo = document.getElementsByClassName("tudo")[0];
-    console.log(ModalSituation);
-    console.log(flag)
-    if(flag === 'noite'){
-        ModalColor.style.backgroundColor = '#577c85';
-    }else{
-        ModalColor.style.backgroundColor = '#DAAE99';
+function view() {
+        let tudo = document.getElementsByClassName("tudo");
+        let semanal = document.getElementsByClassName("calendar-container")
+        if (modoVisualizacao === 'mensal') {
+            tudo[0].style.display = 'none';
+            semanal[0].style.display = 'block';
+            modoVisualizacao = 'semanal';
+            //console.log(modoVisualizacao);
 
+        } else {
+            tudo[0].style.display = 'block';
+            semanal[0].style.display = 'none';
+            modoVisualizacao = 'mensal';
+        }
     }
-    if(ModalSituation === 'fechado'){
-        modal.style.display = ('block');
-        ModalSituation = 'aberto';
-        tudo.style.display = ('none')
-    }else if(ModalSituation === 'aberto'){
-        modal.style.display = 'none';
-        tudo.style.display = ('block')
-        ModalSituation = 'fechado'; 
+    function OpenFormulario() {
+        let modal = document.getElementsByClassName("formulario")[0];
+        let ModalColor = document.getElementById('Modal');
+        let tudo = document.getElementsByClassName("tudo")[0];
+    
+        console.log(ModalSituation);
+        console.log(flag);
+    
+        if (flag === 'noite') {
+            ModalColor.style.backgroundColor = '#577c85';
+        } else {
+            ModalColor.style.backgroundColor = '#DAAE99';
+        }
+    
+        if (ModalSituation === 'fechado') {
+            modal.style.display = 'block'; 
+            tudo.style.display = 'none';    
+            ModalSituation = 'aberto';      
+        } else {
+            if (ModalSituation === 'aberto' && modoVisualizacao === 'semanal') {
+                tudo.style.display = 'none';
+            } else {
+                modal.style.display = 'none'; 
+                tudo.style.display = 'block';  
+            }
+            ModalSituation = 'fechado'; 
+        }
     }
-
-}
+    
 const renderizarCalendario = () => {
     mesHTML.innerText = `${nomesMeses[mes]} ${ano}`;
     const primeiro_dia = new Date(ano, mes, 1).getDay();
@@ -79,26 +99,13 @@ const renderizarCalendario = () => {
                 mesSelecionado++;
             }
             const selectedDateDisplay = document.getElementById('selected-date');
-            DataInput.value = `${ano}-${String(mesSelecionado).padStart(2,'0')}-${String(day).padStart(2,'0')}`
+            DataInput.value = `${ano}-${String(mesSelecionado).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
             selectedDateDisplay.textContent = `Você selecionou o dia ${day} de ${nomesMeses[mesSelecionado-1]}`;
             selectedDateDisplay.innerHTML += `<button style="margin:10px;" onclick="OpenFormulario()">Adicionar Evento</button>`;
         });
     });
 };
 
-function view() {
-        let tudo = document.getElementsByClassName("tudo");
-        let semanal = document.getElementsByClassName("calendar-container")
-        if (modoVisualizacao === 'mensal') {
-            tudo[0].style.display = 'none';
-            semanal[0].style.display = 'block';
-            modoVisualizacao = 'semanal';
-        } else {
-            tudo[0].style.display = 'block';
-            semanal[0].style.display = 'none';
-            modoVisualizacao = 'mensal';
-        }
-    }
 
 
 icones.forEach(icon => {
@@ -177,10 +184,11 @@ function renderSemana() {
             this.classList.add('selected');
             // console.log("Cicou")
             const day = this.textContent;
-            let mesSelecionado = mes;
-
-            const selectedDateDisplay = document.getElementById('selected-date');
-            selectedDateDisplay.textContent = `Você selecionou o dia ${day} de ${nomesMeses[mesSelecionado]}`;
+            let DataInput = document.getElementById('txtdata');
+            let mesSelecionado = mes+1;
+            const selectedDateDisplay = document.getElementById('selected-date2');
+            DataInput.value = `${ano}-${String(mesSelecionado).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+            selectedDateDisplay.textContent = `Você selecionou o dia ${day} de ${nomesMeses[mesSelecionado-1]}`;
             selectedDateDisplay.innerHTML += `<button style="margin:10px;" onclick="OpenFormulario()">Adicionar Evento</button>`;
 
         });
@@ -191,5 +199,4 @@ function changeWeek(direction) {
     displayedDate.setDate(displayedDate.getDate() + direction * 7);
     renderSemana();
 }
-
 renderizarCalendario();
